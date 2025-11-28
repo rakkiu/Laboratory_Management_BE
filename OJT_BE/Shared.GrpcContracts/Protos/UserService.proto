@@ -1,0 +1,18 @@
+﻿syntax = "proto3";
+package iam;
+option csharp_namespace = "Shared.GrpcContracts";
+
+service UserService {
+  // Lấy thông tin người dùng theo userId (GUID string)
+  rpc GetUserById (GetUserByIdRequest) returns (GetUserByIdReply);
+}
+
+message GetUserByIdRequest {
+  string userId = 1;
+}
+
+message GetUserByIdReply {
+  bool found = 1;
+  string userId = 2;
+  string fullName = 3;
+}

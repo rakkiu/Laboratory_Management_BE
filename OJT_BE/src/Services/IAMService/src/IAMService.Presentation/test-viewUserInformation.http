@@ -1,0 +1,33 @@
+### IAM Service - View User Information API Tests
+@baseUrl = http://localhost:5000
+@accessToken = your_access_token_here
+@userId = 550e8400-e29b-41d4-a716-446655440000
+
+### 1. Login first to get a valid access token
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@system.com",
+  "password": "Admin@123"
+}
+
+### 2. View User Information - Success Case (200)
+GET {{baseUrl}}/api/users/{{userId}}
+Authorization: Bearer {{accessToken}}
+
+### 3. View User Information - Missing Token (401)
+GET {{baseUrl}}/api/users/{{userId}}
+
+### 4. View User Information - Invalid Token (401)
+GET {{baseUrl}}/api/users/{{userId}}
+Authorization: Bearer invalid_token_here
+
+### 5. View User Information - User Not Found (404)
+GET {{baseUrl}}/api/users/00000000-0000-0000-0000-000000000000
+Authorization: Bearer {{accessToken}}
+
+### 6. View User Information - Invalid UserId Format (400)
+GET {{baseUrl}}/api/users/invalid-uuid-format
+Authorization: Bearer {{accessToken}}
+

@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+		<LangVersion>12.0</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="CreateTestOrderExistPatient\**" />
+	  <EmbeddedResource Remove="CreateTestOrderExistPatient\**" />
+	  <None Remove="CreateTestOrderExistPatient\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="coverlet.collector" Version="6.0.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+		<PackageReference Include="NUnit" Version="4.4.0" />
+		<PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
+		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+		<!-- Added -->
+		<PackageReference Include="Moq" Version="4.20.72" />
+		<PackageReference Include="FluentAssertions" Version="6.12.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\src\PatientService.Application\PatientService.Application.csproj" />
+		<ProjectReference Include="..\src\PatientService.Domain\PatientService.Domain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="NUnit.Framework" />
+	</ItemGroup>
+
+</Project>
